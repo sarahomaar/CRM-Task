@@ -1,0 +1,187 @@
+<div class="bg-light ms-4 p-4">
+    <div class="ms-5">
+      <a class="text-decoration-none px-3 text-dark fw-bold shadow-lg rounded py-2" href="">Deals</a>
+      <a class="text-decoration-none px-3 text-secondary" href="">Activities</a>
+      <a class="text-decoration-none px-3 text-secondary" href="">Statistics</a>
+    </div>
+  </div>
+  <div class="row m-5 ">
+    <div class="d-flex justify-content-evenly">
+      <h3 class="col-md m-3">Deals</h3>
+      <div class="col-md-2">
+  
+      
+    </div>
+    <div class="col-6 p-2">
+        <select class="p-2 me-3 text-secondary">
+          <option selected>Segment: All</option>
+          <option >
+            Segment A (21)
+          </option>
+          <option >
+            Segment B (7)
+          </option>
+          <option >
+            Segment C (14)
+          </option>
+          
+        </select>
+        <select class="p-2 me-3 text-secondary">
+          <option selected>Assignee: All</option>
+          <option >
+            
+          </option>
+        </select>
+        <select class="p-2 me-3 text-secondary">
+          <option selected>Status: All</option>
+          <option >
+           
+          </option>
+        </select>
+  
+        <input class="form-control "  type="text" name="search" [(ngModel)]="searchWord" placeholder="Search by name or flag" class="p-2" style="width: 250px; height: 40px;" >
+  
+      </div>
+    <button type="button" class="btn btn-primary  " style="height: 50px; width: 150px;"><i
+        class="bi bi-plus-circle-fill me-3"></i>Add Deal</button>
+    </div>
+  </div>
+<!-- <div class="m-4 p-2 row ">
+    <h1 class="col-md"> Deals</h1>
+    
+    <input class="form-control col-md" placeholder= "Search by first_name or last_name or email" type="text" name="search" [(ngModel)]="searchWord" >
+</div> -->
+<div class="row m-4 " cdkDropListGroup>
+    
+    <div class="col-md" 
+    cdkDropList 
+    [cdkDropListData]="data"
+    (cdkDropListDropped)="drop($event)">
+        <h3 class=" bg-light p-2 rounded">Potential Value
+            
+        </h3>
+        
+      <div class="card shadow-lg "  *ngFor="let item of data|search:searchWord" cdkDrag>
+    
+        <div class="card-body   mb-5 bg-white rounded " *ngIf=" item.status==='Potential Value'"  >
+          
+            <h5>{{item.company}}  </h5>
+            <blockquote class="  blockquote  ">
+                <h5 class=" rounded-4 btn btn-secondary text-uppercase m-2">{{item.state}}</h5>
+                <p class=" rounded-4 btn btn-primary m-2">{{item.probability_status}}</p>
+
+            </blockquote>
+           <blockquote class="  blockquote   ">
+            <i class="bi bi-telephone-fill text-secondary"> {{item.first_name}} {{item.last_name}} {{item.phone}}
+            <p class="text-secondary "></p></i>
+           </blockquote>
+           <div class="text-secondary"><i class="bi bi-calendar2-week "></i> {{item.date}}</div>
+       
+        </div>
+      </div>
+      
+      </div>
+      <div class="col-md" 
+      cdkDropList 
+      [cdkDropListData]="data"
+      (cdkDropListDropped)="drop($event)">
+          <h3 class=" bg-light p-2 rounded ">Focus</h3>
+        <div class="card shadow-lg" *ngFor="let item of data |search:searchWord" cdkDrag>
+      
+          <div class="card-body mb-5 bg-white rounded " *ngIf=" item.status==='Focus'">
+              <h5>{{item.company}}  </h5>
+              <blockquote class="  blockquote  ">
+                  <h5 class=" rounded-4 btn btn-secondary text-uppercase m-2">{{item.state}}</h5>
+                  <p class=" rounded-4 btn btn-primary m-2">{{item.probability_status}}</p>
+  
+              </blockquote>
+             <blockquote class="  blockquote   ">
+              <i class="bi bi-telephone-fill text-secondary"> {{item.first_name}} {{item.last_name}} {{item.phone}}
+              <p class="text-secondary "></p></i>
+             </blockquote>
+             <div class="text-secondary"><i class="bi bi-calendar2-week "></i> {{item.date}}</div>
+         
+           
+          </div>
+        </div>
+        
+        </div>
+        <div class="col-md" 
+        cdkDropList 
+        [cdkDropListData]="data"
+        (cdkDropListDropped)="drop($event)">
+            <h3 class=" bg-light p-2 rounded ">Contact Made</h3>
+          <div class="card shadow-lg "  *ngFor="let item of data |search:searchWord " cdkDrag>
+        
+            <div class="card-body  mb-5 bg-white rounded " *ngIf=" item.status==='Contact Made'"  >
+              
+                <h5>{{item.company}}  </h5>
+                <blockquote class="  blockquote  ">
+                    <h5 class=" rounded-4 btn btn-secondary text-uppercase m-2">{{item.state}}</h5>
+                    <p class=" rounded-4 btn btn-primary m-2">{{item.probability_status}}</p>
+    
+                </blockquote>
+               <blockquote class="  blockquote   ">
+                <i class="bi bi-telephone-fill text-secondary"> {{item.first_name}} {{item.last_name}} {{item.phone}}
+                <p class="text-secondary "></p></i>
+               </blockquote>
+               <div class="text-secondary"><i class="bi bi-calendar2-week "></i> {{item.date}}</div>
+           
+             
+            </div>
+          </div>
+          
+          </div>
+          <div class="col-md" 
+          cdkDropList 
+          [cdkDropListData]="data"
+          (cdkDropListDropped)="drop($event)">
+              <h3 class=" bg-light p-2 rounded">Offer Sent</h3>
+            <div class="card shadow-lg "  *ngFor="let item of data |search:searchWord" cdkDrag>
+          
+              <div class="card-body  mb-5 bg-white rounded " *ngIf=" item.status==='Offer Sent'"  >
+                
+                  <h5>{{item.company}}  </h5>
+                  <blockquote class="  blockquote  ">
+                      <h5 class=" rounded-4 btn btn-secondary text-uppercase m-2">{{item.state}}</h5>
+                      <p class=" rounded-4 btn btn-primary m-2">{{item.probability_status}}</p>
+      
+                  </blockquote>
+                 <blockquote class="  blockquote   ">
+                  <i class="bi bi-telephone-fill text-secondary"> {{item.first_name}} {{item.last_name}} {{item.phone}}
+                  <p class="text-secondary "></p></i>
+                 </blockquote>
+                 <div class="text-secondary"><i class="bi bi-calendar2-week "></i> {{item.date}}</div>
+             
+               
+              </div>
+            </div>
+            
+            </div>
+            <div class="col-md" 
+            cdkDropList 
+            [cdkDropListData]="data"
+            (cdkDropListDropped)="drop($event)">
+                <h3 class=" bg-light p-2 rounded">Getting Ready</h3>
+              <div class="card shadow-lg "  *ngFor="let item of data |search:searchWord " cdkDrag>
+            
+                <div class="card-body mb-5 bg-white rounded " *ngIf=" item.status==='Getting Ready'"  >
+                  
+                    <h5>{{item.company}}  </h5>
+                    <blockquote class="  blockquote  ">
+                        <h5 class=" rounded-4 btn btn-secondary text-uppercase m-2">{{item.state}}</h5>
+                        <p class=" rounded-4 btn btn-primary m-2">{{item.probability_status}}</p>
+        
+                    </blockquote>
+                   <blockquote class="  blockquote   ">
+                    <i class="bi bi-telephone-fill text-secondary"> {{item.first_name}} {{item.last_name}} {{item.phone}}
+                    <p class="text-secondary "></p></i>
+                   </blockquote>
+                   <div class="text-secondary"><i class="bi bi-calendar2-week "></i> {{item.date}}</div>
+               
+                 
+                </div>
+              </div>
+              
+              </div>
+</div>
